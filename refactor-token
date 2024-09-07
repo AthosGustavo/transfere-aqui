@@ -1,0 +1,46 @@
+package com.transfere.aqui.projeto.service;
+
+import org.springframework.stereotype.Service;
+
+import java.security.SecureRandom;
+import java.util.Base64;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+@Service
+public class TokenService {
+
+    private static final long TOKEN_EXPIRATION_MS = 15 * 60 * 1000; // 15 minutos
+    private Map<String, TokenDownloadSemAutenticacao> tokenToFileIdMap = new HashMap<>();
+
+    public String generateToken(Long fileId) {
+        String token = Base64.getUrlEncoder().encodeToString((fileId + "-" + new SecureRandom().nextInt()).getBytes());
+        Date expirationDate = new Date(System.currentTimeMillis() + TOKEN_EXPIRATION_MS);
+        tokenToFileIdMap.put(token, new TokenDownloadSemAutenticacao(fileId, expirationDate));
+        return token;
+    }
+
+    public TokenDownloadSemAutenticacao getTokenData(String token) {
+        return tokenToFileIdMap.get(token);
+    }
+
+    // Classe estática interna
+    private static class TokenDownloadSemAutenticacao {
+        Long idArquivo;
+        Date tempoExpiraToken;
+
+        TokenDownloadSemAutenticacao(Long idArquivo, Date tempoExpiraToken) {
+            this.idArquivo = idArquivo;
+            this.tempoExpiraToken = tempoExpiraToken;
+        }
+
+        public Long getIdArquivo() {
+            return idArquivo;
+        }
+
+        public Date getTempoExpiraToken() {
+            return tempoExpiraToken;
+        }
+    }
+}

@@ -9,9 +9,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
+@Table(schema = "public")
 @Entity
 @SequenceGenerator(name = "seq_arquivo", allocationSize = 1, initialValue = 1)
 public class Arquivo {

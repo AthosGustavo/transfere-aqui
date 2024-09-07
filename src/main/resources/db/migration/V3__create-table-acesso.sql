@@ -1,0 +1,12 @@
+CREATE TABLE acesso (
+	id BIGINT NOT NULL,
+	descricao varchar(50) NOT NULL,
+	CONSTRAINT acesso_pkey PRIMARY KEY (id)
+);
+
+CREATE SEQUENCE seq_acesso
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;

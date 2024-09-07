@@ -2,11 +2,15 @@ package com.transfere.aqui.projeto.infra.token;
 
 import java.util.Date;
 
-public class TokenDownloadSemAutenticacao {
+import org.springframework.stereotype.Component;
+
+
+
+public class TokenInfo{
 	private Long idArquivo;
 	private Date tempoExpiraToken;
 	
-	public TokenDownloadSemAutenticacao(Long idArquivo, Date tempoExpiraToken) {
+	public TokenInfo(Long idArquivo, Date tempoExpiraToken) {
 		super();
 		this.idArquivo = idArquivo;
 		this.tempoExpiraToken = tempoExpiraToken;
@@ -27,5 +31,7 @@ public class TokenDownloadSemAutenticacao {
 	public void setTempoExpiraToken(Date tempoExpiraToken) {
 		this.tempoExpiraToken = tempoExpiraToken;
 	}
+	
+	
 	
 }

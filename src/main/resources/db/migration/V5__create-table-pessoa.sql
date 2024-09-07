@@ -1,0 +1,14 @@
+CREATE TABLE pessoa (
+    id BIGINT NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(60) NOT NULL,
+    cpf VARCHAR(15) NOT NULL,
+    CONSTRAINT pessoa_pkey PRIMARY KEY (id)
+);
+
+CREATE SEQUENCE seq_pessoa
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
