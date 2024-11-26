@@ -18,5 +18,9 @@ public class ControladorExcecoes {
 	    erroDetalhado.put("codigo", String.valueOf(HttpStatus.BAD_REQUEST.value())); // Código HTTP 400
 	    return new ResponseEntity<>(erroDetalhado, HttpStatus.BAD_REQUEST);
 	}
-
+	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<String> tratamentoGenericoExcecao(Exception ex){
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu um erro inesperado:" + ex.getMessage());
+	}
 }

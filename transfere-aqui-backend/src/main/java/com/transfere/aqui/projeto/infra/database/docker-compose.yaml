@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+    postgres:
+        container_name: postgres-container
+        image: 'postgres'
+        environment:
+            POSTGRES_DB: transfere_aqui
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+        volumes:
+            - ./pgdata:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
