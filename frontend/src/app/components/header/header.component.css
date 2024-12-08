@@ -1,0 +1,17 @@
+.header-container{
+    height: 60px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    font-family: "JetBrains Mono", serif;
+    font-weight: bold;
+}
+
+.header-container h1{
+    color: black;
+    font-size: 30px;
+}
+.header-container span{
+    color: rgb(224, 50, 31);
+}
+
